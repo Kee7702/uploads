@@ -39,7 +39,7 @@ jobs:
           token: ${{ secrets.TOKEN }}
           out-file-path: ${{ secrets.TEMP_ID }}
           latest: true
-          fileName: "*"
+          fileName: "minecraft-launcher*"
       - name: Checkout KHS
         uses: actions/checkout@v3
         with:
