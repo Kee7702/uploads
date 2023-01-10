@@ -27,10 +27,18 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Checkout Temp
+        uses: actions/checkout@v3
+        with:
+          repository: Kee7702/tempfilestorage
+          token: ${{ secrets.TOKEN }}
+          path: ./temp/${{ secrets.TEMP_ID }}
+      - name: Checkout KHS
+        uses: actions/checkout@v3
         with:
           repository: Kee7702/KHSAssets
           token: ${{ secrets.TOKEN }}
-          path: ./secure/${{ secrets.WEBPAGE_ID }}
+          path: ./khs/${{ secrets.KHS_ID }}
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
