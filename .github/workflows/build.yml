@@ -32,13 +32,13 @@ jobs:
         with:
           repository: Kee7702/tempfilestorage
           token: ${{ secrets.TOKEN }}
-          path: ./temp/${{ secrets.TEMP_ID }}
+          path: ./${{ secrets.TEMP_ID }}
       - name: Checkout KHS
         uses: actions/checkout@v3
         with:
           repository: Kee7702/KHSAssets
           token: ${{ secrets.TOKEN }}
-          path: ./khs/${{ secrets.KHS_ID }}
+          path: ./${{ secrets.KHS_ID }}
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
