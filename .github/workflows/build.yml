@@ -25,9 +25,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Add mask
-        run: |
-          @echo off
       - name: Checkout
         uses: actions/checkout@v3
         with:
