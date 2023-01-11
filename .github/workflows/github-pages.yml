@@ -54,10 +54,10 @@ jobs:
         with:
           source: ./
           destination: ./_site
+      - name: Delete Files
+        run: rm -rf */.github
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
-      - name: Delete Artifact
-        uses: geekyeggo/delete-artifact@v2
 
   # Deployment job
   deploy:
