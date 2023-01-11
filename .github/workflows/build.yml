@@ -74,7 +74,7 @@ jobs:
   clean:
     if: always()
     runs-on: ubuntu-latest
-    needs: build
+    needs: deploy
     steps:
       - name: Delete Artifact
         uses: geekyeggo/delete-artifact@v2
