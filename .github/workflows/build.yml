@@ -54,6 +54,11 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+      - name: Delete Artifact
+        uses: geekyeggo/delete-artifact@v2
+        if: failure()
+        with:
+          name: github-pages
 
   # Deployment job
   deploy:
@@ -68,6 +73,6 @@ jobs:
         uses: actions/deploy-pages@v1
       - name: Delete Artifact
         uses: geekyeggo/delete-artifact@v2
-        if: ${{ always() }}
+        if: always()
         with:
           name: github-pages
