@@ -33,6 +33,12 @@ jobs:
           repository: Kee7702/tempfilestorage
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TEMP_ID }}
+      - name: Checkout TBSTAFFSHARE
+        uses: actions/checkout@v3
+        with:
+          repository: Kee7702/tb-staff-share
+          token: ${{ secrets.TOKEN }}
+          path: ./${{ secrets.TBSTAFF_ID }}
       - name: Checkout KHS
         uses: actions/checkout@v3
         with:
