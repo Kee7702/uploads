@@ -47,6 +47,13 @@ jobs:
           repository: Kee7702/PrivateFileShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.PFS_ID }}
+      - uses: robinraju/release-downloader@v1.7
+        with:
+          repository: Kee7702/tempfilestorage
+          token: ${{ secrets.TOKEN }}
+          latest: true
+          fileName: ${{ secrets.FILETOKEN }}
+          out-file-path: ./${{ secrets.TEMP_ID }}
       - name: Checkout KHS
         uses: actions/checkout@v3
         with:
