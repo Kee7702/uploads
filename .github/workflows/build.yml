@@ -60,6 +60,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
-      - uses: geekyeggo/delete-artifact@v2
+      - name: Delete Artifact
+        uses: geekyeggo/delete-artifact@v2
+        if: ${{ always() }}
         with:
           name: github-pages
