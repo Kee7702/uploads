@@ -41,6 +41,12 @@ jobs:
           repository: Kee7702/tb-staff-share
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TBSTAFF_ID }}
+      - name: Checkout PFSHARE
+        uses: actions/checkout@v3
+        with:
+          repository: Kee7702/PrivateFileShare
+          token: ${{ secrets.TOKEN }}
+          path: ./${{ secrets.PFS_ID }}
       - name: Checkout KHS
         uses: actions/checkout@v3
         with:
