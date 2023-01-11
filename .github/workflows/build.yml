@@ -33,13 +33,6 @@ jobs:
           repository: Kee7702/tempfilestorage
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TEMP_ID }}
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/tempfilestorage"
-          token: ${{ secrets.TOKEN }}
-          out-file-path: ${{ secrets.TEMP_ID }}
-          latest: true
-          fileName: "minecraft-launcher*"
       - name: Checkout KHS
         uses: actions/checkout@v3
         with:
