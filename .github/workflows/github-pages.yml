@@ -1,65 +1,47 @@
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
 name: Deploy Jekyll with GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
-  
+
   repository_dispatch:
     types: [Dispatched from PrivateFileShare]
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Allow one concurrent deployment
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Checkout Temp
+      - name: Checkout AltFileShare
         uses: actions/checkout@v3
         with:
-          repository: Kee7702/tempfilestorage
+          repository: Kee7702/AltFileShare
           token: ${{ secrets.TOKEN }}
-          path: ./${{ secrets.TEMP_ID }}
-      - name: Checkout TBSTAFFSHARE
+          path: ./${{ secrets.AFS_ID }}
+      - name: Checkout ToolboxStaffShare
         uses: actions/checkout@v3
         with:
-          repository: Kee7702/tb-staff-share
+          repository: Kee7702/ToolboxStaffShare
           token: ${{ secrets.TOKEN }}
-          path: ./${{ secrets.TBSTAFF_ID }}
-      - name: Checkout PFSHARE
+          path: ./${{ secrets.TSS_ID }}
+      - name: Checkout PrivateFileShare
         uses: actions/checkout@v3
         with:
           repository: Kee7702/PrivateFileShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.PFS_ID }}
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: Kee7702/tempfilestorage
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.FILETOKEN }}
-          out-file-path: ./${{ secrets.TEMP_ID }}
-      - name: Checkout KHS
-        uses: actions/checkout@v3
-        with:
-          repository: Kee7702/KHSAssets
-          token: ${{ secrets.TOKEN }}
-          path: ./${{ secrets.KHS_ID }}
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Build with Jekyll
@@ -67,12 +49,9 @@ jobs:
         with:
           source: ./
           destination: ./_site
-      - name: Delete Files
-        run: rm -rf */.github
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
@@ -85,7 +64,6 @@ jobs:
         uses: actions/deploy-pages@v1
 
 
-  # Artifact clean-up job
   clean:
     if: always()
     runs-on: ubuntu-latest
