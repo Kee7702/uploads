@@ -21,6 +21,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tbstaff: [TBSTAFF_00010101, TBSTAFF_00010102, TBSTAFF_00010201, TBSTAFF_00020101, TBSTAFF_00030101, TBSTAFF_00040101, TBSTAFF_00050101, TBSTAFF_00060101, TBSTAFF_00060102, TBSTAFF_00070101, TBSTAFF_00070102, TBSTAFF_00080101]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -36,89 +39,13 @@ jobs:
           repository: Kee7702/ToolboxStaffShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TSS_ID }}
-      - uses: robinraju/release-downloader@v1.7
+      - name: Download resolves
+        uses: robinraju/release-downloader@v1.7
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
           latest: true
-          fileName: ${{ secrets.TBSTAFF_00010101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00010102 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00010201 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00020101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00030101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00040101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00050101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00060101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00060102 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00070101 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00070102 }}.md
-          out-file-path: ./resolve
-      - uses: robinraju/release-downloader@v1.7
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          latest: true
-          fileName: ${{ secrets.TBSTAFF_00080101 }}.md
+          fileName: ${{ secrets[matrix.tbstaff] }}.md
           out-file-path: ./resolve
       - name: Checkout PrivateFileShare
         uses: actions/checkout@v3
