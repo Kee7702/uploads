@@ -36,6 +36,8 @@ jobs:
           repository: Kee7702/ToolboxStaffShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TSS_ID }}
+      - name: Move BilligerHost Contents
+        run: mv -f ${{ secrets.TSS_ID }}/billigerhost billigerhost
       - name: Download 00010101 resolve 
         uses: robinraju/release-downloader@v1.7
         with:
