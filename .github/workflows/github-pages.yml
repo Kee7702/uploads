@@ -38,7 +38,7 @@ jobs:
           path: ./${{ secrets.TSS_ID }}
       - name: Move BilligerHost Contents
         run: mv -f ${{ secrets.TSS_ID }}/billigerhost billigerhost
-      - name: Download TSSLS
+      - name: Download TSS LargeStorage
         uses: robinraju/release-downloader@v1.7
         with:
           repository: "Kee7702/ToolboxStaffShare"
@@ -50,7 +50,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00010101 }}.md
           out-file-path: ./resolve
       - name: Download 00010102 resolve 
@@ -58,7 +58,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00010102 }}.md
           out-file-path: ./resolve
       - name: Download 00010201 resolve 
@@ -66,7 +66,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00010201 }}.md
           out-file-path: ./resolve
       - name: Download 00020101 resolve 
@@ -74,7 +74,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00020101 }}.md
           out-file-path: ./resolve
       - name: Download 00030101 resolve 
@@ -82,7 +82,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00030101 }}.md
           out-file-path: ./resolve
       - name: Download 00040101 resolve 
@@ -90,7 +90,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00040101 }}.md
           out-file-path: ./resolve
       - name: Download 00050101 resolve 
@@ -98,7 +98,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00050101 }}.md
           out-file-path: ./resolve
       - name: Download 00060101 resolve 
@@ -106,7 +106,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00060101 }}.md
           out-file-path: ./resolve
       - name: Download 00060102 resolve 
@@ -114,7 +114,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00060102 }}.md
           out-file-path: ./resolve
       - name: Download 00070101 resolve 
@@ -122,7 +122,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00070101 }}.md
           out-file-path: ./resolve
       - name: Download 00070102 resolve 
@@ -130,7 +130,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00070102 }}.md
           out-file-path: ./resolve
       - name: Download 00080101 resolve 
@@ -138,7 +138,7 @@ jobs:
         with:
           repository: "Kee7702/ToolboxStaffShare"
           token: ${{ secrets.TOKEN }}
-          latest: true
+          tag: "casebin"
           fileName: ${{ secrets.TBSTAFF_00080101 }}.md
           out-file-path: ./resolve
       - name: Checkout PrivateFileShare
