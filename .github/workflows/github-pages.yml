@@ -42,7 +42,7 @@ jobs:
           repository: "Kee7702/AltFileShare"
           token: ${{ secrets.TOKEN }}
           tag: "lfs"
-          out-file-path: ./${{ secrets.AFS_ID }}
+          out-file-path: ./${{ secrets.AFS_ID }}/lfs
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
       - name: Upload artifact
