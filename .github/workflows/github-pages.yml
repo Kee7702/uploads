@@ -29,6 +29,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Delete .git
         run: rm -rf .git
+      - name: Delete .github
+        run: rm -rf .github
+      - name: Delete CNAME
+        run: rm -rf CNAME
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
