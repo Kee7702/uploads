@@ -51,9 +51,11 @@ jobs:
           repository: "Kee7702/AltFileShare"
           token: ${{ secrets.TOKEN }}
           tag: "lfs"
-          out-file-path: ./${{ secrets.AFS_ID }}/lfs
+          out-file-path: ./${{ secrets.AFS_ID }}
       - name: Delete ${{ secrets.AFS_ID }}/.git
         run: rm -rf ${{ secrets.AFS_ID }}/.git
+      - name: Delete ${{ secrets.AFS_ID }}/.gitHUB
+        run: rm -rf ${{ secrets.AFS_ID }}/.gitHUB
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
