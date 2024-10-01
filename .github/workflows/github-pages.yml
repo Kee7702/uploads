@@ -1,4 +1,4 @@
-name: GitHub Pages Static Files
+name: Deploy Jekyll with GitHub Pages
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
   repository_dispatch:
-    types: [Dispatched from AFS]
+    types: [Dispatched]
 
 permissions:
   contents: read
@@ -36,7 +36,7 @@ jobs:
           repository: Kee7702/ToolboxStaffShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TSS_ID }}
-      - name: Download AFS-LFS
+      - name: Download AFSLFS
         uses: robinraju/release-downloader@v1.11
         with:
           repository: "Kee7702/AltFileShare"
@@ -45,6 +45,11 @@ jobs:
           out-file-path: ./${{ secrets.AFS_ID }}/lfs
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1.0.13
+        with:
+          source: ./
+          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
 
