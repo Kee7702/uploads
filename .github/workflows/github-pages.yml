@@ -30,13 +30,7 @@ jobs:
           repository: Kee7702/AltFileShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.AFS_ID }}
-      - name: Checkout TSS
-        uses: actions/checkout@v4
-        with:
-          repository: Kee7702/ToolboxStaffShare
-          token: ${{ secrets.TOKEN }}
-          path: ./${{ secrets.TSS_ID }}
-      - name: Download AFSLFS
+      - name: Download LFS
         uses: robinraju/release-downloader@v1.11
         with:
           repository: "Kee7702/AltFileShare"
