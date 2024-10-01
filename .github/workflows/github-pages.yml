@@ -63,6 +63,8 @@ jobs:
           FOLDER: '.'
       - name: Rename .index.html
         run: mv -f .index.html index.html  
+      - name: Delete ***/index.html
+        run: rm -rf ${{ secrets.AFS_ID }}/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
