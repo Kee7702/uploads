@@ -1,4 +1,4 @@
-name: Deploy Jekyll with GitHub Pages
+name: GitHub Pages Static Files
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
   repository_dispatch:
-    types: [Dispatched from PrivateFileShare]
+    types: [Dispatched from AFS]
 
 permissions:
   contents: read
@@ -24,130 +24,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Checkout AltFileShare
+      - name: Checkout AFS
         uses: actions/checkout@v4
         with:
           repository: Kee7702/AltFileShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.AFS_ID }}
-      - name: Checkout ToolboxStaffShare
+      - name: Checkout TSS
         uses: actions/checkout@v4
         with:
           repository: Kee7702/ToolboxStaffShare
           token: ${{ secrets.TOKEN }}
           path: ./${{ secrets.TSS_ID }}
-      - name: Move BilligerHost Contents
-        run: mv -f ${{ secrets.TSS_ID }}/billigerhost billigerhost
-      - name: Download TSS LargeStorage
+      - name: Download AFS-LFS
         uses: robinraju/release-downloader@v1.11
         with:
-          repository: "Kee7702/ToolboxStaffShare"
+          repository: "Kee7702/AltFileShare"
           token: ${{ secrets.TOKEN }}
-          tag: "largestorage"
-          out-file-path: ./${{ secrets.TSS_ID }}
-      - name: Download 00010101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00010101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00010102 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00010102 }}.md
-          out-file-path: ./resolve
-      - name: Download 00010201 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00010201 }}.md
-          out-file-path: ./resolve
-      - name: Download 00020101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00020101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00030101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00030101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00040101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00040101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00050101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00050101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00060101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00060101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00060102 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00060102 }}.md
-          out-file-path: ./resolve
-      - name: Download 00070101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00070101 }}.md
-          out-file-path: ./resolve
-      - name: Download 00070102 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00070102 }}.md
-          out-file-path: ./resolve
-      - name: Download 00080101 resolve 
-        uses: robinraju/release-downloader@v1.11
-        with:
-          repository: "Kee7702/ToolboxStaffShare"
-          token: ${{ secrets.TOKEN }}
-          tag: "casebin"
-          fileName: ${{ secrets.TBSTAFF_00080101 }}.md
-          out-file-path: ./resolve
+          tag: "lfs"
+          out-file-path: ./${{ secrets.AFS_ID }}
       - name: Setup Pages
         uses: actions/configure-pages@v5.0.0
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1.0.13
-        with:
-          source: ./
-          destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3.0.1
 
