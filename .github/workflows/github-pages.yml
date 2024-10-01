@@ -51,7 +51,7 @@ jobs:
           repository: "Kee7702/AltFileShare"
           token: ${{ secrets.TOKEN }}
           tag: "lfiles"
-          fileNameL: "*"
+          fileName: "*"
           out-file-path: ./${{ secrets.AFS_ID }}/lfiles
       - name: Delete ***/.git
         run: rm -rf ${{ secrets.AFS_ID }}/.git
