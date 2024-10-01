@@ -37,8 +37,8 @@ jobs:
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
           FOLDER: '.'
-      - name: Move index.html
-        run: mv -f index.html .tmp/index.html  
+      - name: Rename index.html
+        run: mv -f index.html .index.html  
       - name: Checkout AFS
         uses: actions/checkout@v4
         with:
@@ -56,8 +56,8 @@ jobs:
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
           FOLDER: '.'
-      - name: Move index.html
-        run: mv -f .tmp/index.html index.html  
+      - name: Rename .index.html
+        run: mv -f .index.html index.html  
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
