@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@main
       - name: Delete .git
         run: rm -rf .git
       - name: Delete .github
@@ -34,7 +34,7 @@ jobs:
       - name: Delete CNAME
         run: rm -rf CNAME
       - name: Generate Directory Listings
-        uses: jayanta525/github-pages-directory-listing@v4.0.0
+        uses: jayanta525/github-pages-directory-listing@v4
         with:
           FOLDER: '.'
       - name: Rename index.html
@@ -50,14 +50,14 @@ jobs:
         with:
           repository: "Kee7702/AltFileShare"
           token: ${{ secrets.TOKEN }}
-          tag: "lfs"
-          out-file-path: ./${{ secrets.AFS_ID }}
+          tag: "lfiles"
+          out-file-path: ./${{ secrets.AFS_ID }}/lfs
       - name: Delete ${{ secrets.AFS_ID }}/.git
         run: rm -rf ${{ secrets.AFS_ID }}/.git
-      - name: Delete ${{ secrets.AFS_ID }}/.gitHUB
-        run: rm -rf ${{ secrets.AFS_ID }}/.gitHUB
+      - name: Delete ${{ secrets.AFS_ID }}/.github
+        run: rm -rf ${{ secrets.AFS_ID }}/.github
       - name: Generate Directory Listings
-        uses: jayanta525/github-pages-directory-listing@v4.0.0
+        uses: jayanta525/github-pages-directory-listing@v4
         with:
           FOLDER: '.'
       - name: Rename .index.html
@@ -78,7 +78,7 @@ jobs:
     needs: deploy
     steps:
       - name: Delete Artifact
-        uses: geekyeggo/delete-artifact@v5.1.0
+        uses: geekyeggo/delete-artifact@v5
         if: always()
         with:
           name: github-pages
