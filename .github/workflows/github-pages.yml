@@ -1,4 +1,4 @@
-name: Deploy Jekyll with GitHub Pages
+name: Deploy Static Files to GitHub Pages
 
 on:
   push:
