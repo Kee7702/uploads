@@ -57,6 +57,8 @@ jobs:
         run: rm -rf ${{ secrets.AFS_ID }}/.git
       - name: Delete ***/.github
         run: rm -rf ${{ secrets.AFS_ID }}/.github
+      - name: Copy style.css
+        run: cp style.css ${{ secrets.AFS_ID }}/projects/vdb/style.css
       - name: Generate Directory Listings
         uses: jayanta525/github-pages-directory-listing@v4.0.0
         with:
