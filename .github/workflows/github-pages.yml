@@ -4,11 +4,6 @@ on:
   push:
     branches: ["main"]
 
-  workflow_dispatch:
-
-  repository_dispatch:
-    types: [Dispatched]
-
 permissions:
   contents: read
   pages: write
@@ -39,12 +34,6 @@ jobs:
           FOLDER: '.'
       - name: Rename index.html
         run: mv -f index.html .index.html  
-      - name: Checkout AFS
-        uses: actions/checkout@v4
-        with:
-          repository: Kee7702/AltFileShare
-          token: ${{ secrets.TOKEN }}
-          path: ./${{ secrets.AFS_ID }}
       - name: Download LFS
         uses: robinraju/release-downloader@v1.11
         with:
@@ -63,8 +52,6 @@ jobs:
           FOLDER: '.'
       - name: Rename .index.html
         run: mv -f .index.html index.html  
-      - name: Delete ***/index.html
-        run: rm -rf ${{ secrets.AFS_ID }}/index.html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
